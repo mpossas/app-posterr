@@ -1,0 +1,35 @@
+$posterr-blue: #378cea;
+$posterr-green: #42b983;
+$posterr-red: #e4352f;
+$posterr-black: #161d26;
+$posterr-white: #ffffff;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: $posterr-black;
+  color: $posterr-white;
+  text-align: center;
+
+  a {
+    color: $posterr-blue;
+  }
+
+  button {
+    font-weight: bold;
+    color: $posterr-white;
+    background-color: $posterr-blue;
+    padding: 10px 20px;
+    border: 1px solid $posterr-blue;
+    border-radius: 20px;
+  }
+
+  .btn-danger {
+    background-color: $posterr-red;
+    border-color: $posterr-red;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: $posterr-white;
+    color: $posterr-black;
+  }
+}
