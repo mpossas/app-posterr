@@ -1,5 +1,5 @@
 <template>
-    <Feed />
+  <Feed />
 </template>
 
 <script setup>

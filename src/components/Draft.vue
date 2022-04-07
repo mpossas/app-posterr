@@ -19,6 +19,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { computed, ref } from 'vue'
 
@@ -40,11 +41,16 @@ const maxCharCount = computed(() => {
     flex-direction: column;
     align-items: flex-end;
     padding: 10px;
+    border-bottom: 1px solid var(--pstr-dark-gray);
+
+    @media (prefers-color-scheme: light) {
+      border-color: var(--pstr-light-gray);
+    }
   }
   &-text {
     width: 100%;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
     padding: 10px;
     color: white;
@@ -63,7 +69,9 @@ const maxCharCount = computed(() => {
 }
 
 .char-count {
-  border: 1px solid var(--pstr-green);
+  border: 2px solid var(--pstr-green);
+  font-weight: bold;
+  font-size: 14px;
   width: fit-content;
   border-radius: 20px;
   padding: 5px 10px;

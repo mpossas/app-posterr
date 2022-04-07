@@ -3,11 +3,14 @@
   --pstr-blue: #378cea;
   --pstr-green: #42b983;
   --pstr-red: #e4352f;
+  --pstr-dark-gray: #323b43;
+  --pstr-light-gray: #edf1f2;
 }
 
 body {
   display: flex;
   justify-content: center;
+  font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--pstr-black);
   color: white;
@@ -23,6 +26,7 @@ body {
     border: 1px solid var(--pstr-blue);
     border-radius: 20px;
     cursor: pointer;
+
     &-danger {
       background-color: var(--pstr-red);
       border-color: var(--pstr-red);
@@ -39,9 +43,12 @@ body {
 
     @media (min-width: 768px) {
       width: 30%;
-      border: 1px solid #323b43;
-      border-top: none;
-      border-bottom: none;
+      border-left: 1px solid var(--pstr-dark-gray);
+      border-right: 1px solid var(--pstr-dark-gray);
+
+      @media (prefers-color-scheme: light) {
+        border-color: var(--pstr-light-gray);
+      }
     }
   }
 }
