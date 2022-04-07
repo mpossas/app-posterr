@@ -11,14 +11,14 @@
 import Draft from './components/Draft.vue'
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #nav {
   margin: 10px 0;
 }
 
 a {
-  color: var(--pstr-blue);
+  color: $pstr-blue;
 }
 </style>
 
-<style lang="scss" src="~/assets/css/posterr.scss" />
+<style lang="scss" src="~/assets/scss/posterr.scss" />

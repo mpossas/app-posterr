@@ -1,0 +1,7 @@
+@mixin border-bottom {
+  border-bottom: 1px solid $pstr-dark-gray;
+
+  @media (prefers-color-scheme: light) {
+    border-color: $pstr-light-gray;
+  }
+}

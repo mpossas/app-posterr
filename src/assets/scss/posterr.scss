@@ -1,18 +1,9 @@
-:root {
-  --pstr-black: #161d26;
-  --pstr-blue: #378cea;
-  --pstr-green: #42b983;
-  --pstr-red: #e4352f;
-  --pstr-dark-gray: #323b43;
-  --pstr-light-gray: #edf1f2;
-}
-
 body {
   display: flex;
   justify-content: center;
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--pstr-black);
+  background-color: $pstr-black;
   color: white;
   text-align: center;
   margin: 0;
@@ -21,21 +12,21 @@ body {
     width: fit-content;
     font-weight: bold;
     color: white;
-    background-color: var(--pstr-blue);
+    background-color: $pstr-blue;
     padding: 10px 20px;
-    border: 1px solid var(--pstr-blue);
+    border: 1px solid $pstr-blue;
     border-radius: 20px;
     cursor: pointer;
 
     &-danger {
-      background-color: var(--pstr-red);
-      border-color: var(--pstr-red);
+      background-color: $pstr-red;
+      border-color: $pstr-red;
     }
   }
 
   @media (prefers-color-scheme: light) {
     background-color: white;
-    color: var(--pstr-black);
+    color: $pstr-black;
   }
 
   #app {
@@ -43,11 +34,11 @@ body {
 
     @media (min-width: 768px) {
       width: 30%;
-      border-left: 1px solid var(--pstr-dark-gray);
-      border-right: 1px solid var(--pstr-dark-gray);
+      border-left: 1px solid $pstr-dark-gray;
+      border-right: 1px solid $pstr-dark-gray;
 
       @media (prefers-color-scheme: light) {
-        border-color: var(--pstr-light-gray);
+        border-color: $pstr-light-gray;
       }
     }
   }

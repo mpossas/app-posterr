@@ -41,11 +41,8 @@ const maxCharCount = computed(() => {
     flex-direction: column;
     align-items: flex-end;
     padding: 10px;
-    border-bottom: 1px solid var(--pstr-dark-gray);
 
-    @media (prefers-color-scheme: light) {
-      border-color: var(--pstr-light-gray);
-    }
+    @include border-bottom
   }
   &-text {
     width: 100%;
@@ -54,11 +51,11 @@ const maxCharCount = computed(() => {
     margin-bottom: 10px;
     padding: 10px;
     color: white;
-    background-color: var(--pstr-black);
+    background-color: $pstr-black;
     border: none;
 
     @media (prefers-color-scheme: light) {
-      color: var(--pstr-black);
+      color: $pstr-black;
       background-color: white;
     }
   }
@@ -69,18 +66,18 @@ const maxCharCount = computed(() => {
 }
 
 .char-count {
-  border: 2px solid var(--pstr-green);
+  border: 2px solid $pstr-green;
   font-weight: bold;
   font-size: 14px;
   width: fit-content;
   border-radius: 20px;
   padding: 5px 10px;
-  color: var(--pstr-green);
+  color: $pstr-green;
   margin-right: 10px;
 
   &--danger {
-    color: var(--pstr-red);
-    border-color: var(--pstr-red);
+    color: $pstr-red;
+    border-color: $pstr-red;
   }
 }
 </style>
