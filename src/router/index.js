@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '~/components/Home.vue'
+import Home from '~/pages/Home.vue'
 
 const routes = [
   {
@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/following',
     name: 'Following',
-    component: () => import('~/components/Following.vue')
+    component: () => import('~/pages/Following.vue')
   }
 ]
 

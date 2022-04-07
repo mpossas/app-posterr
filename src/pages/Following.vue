@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import Feed from './Feed.vue'
+import Feed from '~/components/Feed.vue'
 </script>
