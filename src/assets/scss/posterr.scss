@@ -5,7 +5,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: $pstr-black;
   color: white;
-  text-align: center;
   margin: 0;
 
   .pstr-btn {
@@ -33,7 +32,7 @@ body {
     width: 100%;
 
     @media (min-width: 768px) {
-      width: 30%;
+      width: 598px;
       border-left: 1px solid $pstr-dark-gray;
       border-right: 1px solid $pstr-dark-gray;
 

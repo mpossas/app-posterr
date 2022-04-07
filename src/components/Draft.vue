@@ -40,7 +40,9 @@ const maxCharCount = computed(() => {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 10px;
+    padding: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
 
     @include border-bottom
   }
@@ -48,7 +50,7 @@ const maxCharCount = computed(() => {
     width: 100%;
     box-sizing: border-box;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 10px;
     color: white;
     background-color: $pstr-black;
