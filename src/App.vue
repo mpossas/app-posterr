@@ -10,6 +10,9 @@
 
 <script setup>
 import Draft from './components/Draft.vue'
+import { initDatabase } from './data/database'
+
+initDatabase()
 </script>
 
 <style lang="scss" scoped>
