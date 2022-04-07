@@ -8,12 +8,16 @@
 </template>
 
 <script setup>
-import Draft from './components/Draft.vue' 
+import Draft from './components/Draft.vue'
 </script>
 
 <style scoped>
 #nav {
   margin: 10px 0;
+}
+
+a {
+  color: var(--pstr-blue);
 }
 </style>
 

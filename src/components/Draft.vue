@@ -5,7 +5,8 @@
       maxlength="777"
       class="draft-text"
       placeholder="What's on your mind?"
-    ></textarea>
+    >
+    </textarea>
     <div class="draft-actions">
       <span
         v-if="charCount"
@@ -14,11 +15,10 @@
       >
         {{ charCount }} / 777
       </span>
-      <button>Post</button>
+      <button class="pstr-btn">Post</button>
     </div>
   </div>
 </template>
-
 <script setup>
 import { computed, ref } from 'vue'
 
@@ -42,21 +42,18 @@ const maxCharCount = computed(() => {
     padding: 10px;
   }
   &-text {
-    width: 94%;
+    width: 100%;
+    box-sizing: border-box;
     font-size: 18px;
     margin-bottom: 10px;
     padding: 10px;
     color: white;
-    background-color: #161d26;
+    background-color: var(--pstr-black);
     border: none;
 
     @media (prefers-color-scheme: light) {
-      color: #161d26;
+      color: var(--pstr-black);
       background-color: white;
-    }
-
-    @media (min-width: 768px) {
-      width: 96%;
     }
   }
   &-actions {
@@ -66,16 +63,16 @@ const maxCharCount = computed(() => {
 }
 
 .char-count {
-  border: 1px solid #42b983;
+  border: 1px solid var(--pstr-green);
   width: fit-content;
   border-radius: 20px;
   padding: 5px 10px;
-  color: #42b983;
+  color: var(--pstr-green);
   margin-right: 10px;
 
   &--danger {
-    color: #e4352f;
-    border-color: #e4352f;
+    color: var(--pstr-red);
+    border-color: var(--pstr-red);
   }
 }
 </style>
