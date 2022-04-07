@@ -27,6 +27,10 @@ a {
   text-decoration: none;
   margin-right: 10px;
 
+  &:hover {
+    color: $pstr-blue;
+  }
+
   @media (prefers-color-scheme: light) {
     color: $pstr-black;
   }

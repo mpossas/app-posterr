@@ -36,7 +36,7 @@
   }
 
   .repost {
-    padding-right: 15px;
+    padding-right: 20px;
     &:hover {
       color: $pstr-blue;
     }

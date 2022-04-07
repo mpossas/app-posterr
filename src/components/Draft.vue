@@ -50,11 +50,15 @@ const maxCharCount = computed(() => {
     width: 100%;
     box-sizing: border-box;
     font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin-bottom: 15px;
-    padding: 10px;
     color: white;
     background-color: $pstr-black;
     border: none;
+
+    &:focus {
+      outline: none;
+    }
 
     @media (prefers-color-scheme: light) {
       color: $pstr-black;
