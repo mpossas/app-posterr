@@ -1,10 +1,7 @@
-<script setup>
-</script>
-
 <template>
-  <button>Post</button>
-  <button class="btn-danger">Unfollow</button>
+  <Feed />
 </template>
 
-<style scoped>
-</style>
+<script setup>
+import Feed from './Feed.vue'
+</script>
