@@ -1,10 +1,14 @@
 import { getCurrentUser } from './users'
+import { axiosMock } from '~/server/api'
 
-const getPosts = () => JSON.parse(localStorage.getItem('posts')).sort((a, b) => b.id - a.id)
+const getPosts = async () => {
+  const posts = await axiosMock.get('/posts')
+  return JSON.parse(posts)
+}
 
-const userCantPost = () => {
-  const posts = getPosts()
-  const { id: currentUserId } = getCurrentUser()
+const userCantPost = async () => {
+  const posts = await getPosts()
+  const { id: currentUserId } = await getCurrentUser()
   const today = new Date().getDay()
 
   const postsToday = posts.reduce((total, { id: postId, authorId }) => {
@@ -19,56 +23,45 @@ const userCantPost = () => {
   return postsToday === 5
 }
 
-const savePost = (post) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (userCantPost()) {
-        reject()
-      } else {
-        const posts = getPosts()
-        const { id, username } = getCurrentUser()
+const savePost = async post => {
+  if (await userCantPost()) {
+    throw new Error()
+  } else {
+    const posts = await getPosts()
+    const { id, username } = await getCurrentUser()
 
-        posts.push({
-          id: Date.now(),
-          author: username,
-          authorId: id,
-          ...post
-        })
-        localStorage.setItem('posts', JSON.stringify(posts))
-        resolve()
-      }
-    }, 500)
-  })
+    posts.push({
+      id: Date.now(),
+      author: username,
+      authorId: id,
+      ...post
+    })
+
+    return axiosMock.put('/posts', posts)
+  }
 }
 
-export const getAllPosts = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(getPosts())
-    }, 500)
-  })
+const sortPosts = posts => posts.sort((a, b) => b.id - a.id)
+
+export const getAllPosts = async () => {
+  const posts = await getPosts()
+
+  return sortPosts(posts)
 }
 
-export const getFollowedPosts = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const posts = getPosts()
-      const { follows: followedUsers } = getCurrentUser()
+export const getFollowedPosts = async () => {
+  const posts = await getPosts()
+  const { follows: followedUsers } = await getCurrentUser()
+  const followedPosts = posts.filter(post => followedUsers.includes(post.authorId))
 
-      const followedPosts = posts.filter(post => followedUsers.includes(post.authorId))
-      resolve(followedPosts)
-    }, 500)
-  })
+  return sortPosts(followedPosts)
 }
 
-export const getPost = id => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const posts = getPosts()
-      const post = posts.find(post => post.id === id)
-      resolve(post)
-    }, 500)
-  })
+export const getPost = async id => {
+  const posts = await getPosts()
+  const post = posts.find(post => post.id === id)
+
+  return post
 }
 
 export const postMessage = message => {

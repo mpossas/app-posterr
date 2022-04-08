@@ -32,10 +32,14 @@ const router = useRouter()
 
 const post = toRef(props, 'post')
 const postLimitReached = ref(false)
-const { id: currentUserId } = getCurrentUser()
+const currentUserId = ref(0)
+
+getCurrentUser().then(user => {
+  currentUserId.value = user.id
+})
 
 const enableActions = computed(() => {
-  const currentUserIsAuthor = currentUserId === post.value.authorId
+  const currentUserIsAuthor = currentUserId.value === post.value.authorId
   return props.showActions && !currentUserIsAuthor
 })
 

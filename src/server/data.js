@@ -1,3 +1,5 @@
+import { axiosMock } from "./api"
+
 const users = [
   {
     id: 1,
@@ -61,11 +63,11 @@ const posts = [
   }
 ]
 
-export const initDatabase = () => {
+export const initData = () => {
   if (localStorage.getItem('users') && localStorage.getItem('posts')) {
     return
   }
 
-  localStorage.setItem('users', JSON.stringify(users))
-  localStorage.setItem('posts', JSON.stringify(posts))
+  axiosMock.put('/users', users)
+  axiosMock.put('/posts', posts)
 }

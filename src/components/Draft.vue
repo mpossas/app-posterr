@@ -68,9 +68,10 @@ const btnDisabled = computed(() => {
 
 function postDraft () {
   loading.value = true
+
   const postAction = originalPost.value
-  ? quotePost(originalPost.value.id, draft.value)
-  : postMessage(draft.value)
+    ? quotePost(originalPost.value.id, draft.value)
+    : postMessage(draft.value)
 
   postAction
     .then(() => {

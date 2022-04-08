@@ -1,3 +1,11 @@
-const getUsers = () => JSON.parse(localStorage.getItem('users'))
+import { axiosMock } from '~/server/api'
 
-export const getCurrentUser = () => getUsers().find(user => user.loggedIn)
+const getUsers = async () => {
+  const users = await axiosMock.get('/users')
+  return JSON.parse(users)
+}
+
+export const getCurrentUser = async () => {
+  const users = await getUsers()
+  return users.find(user => user.loggedIn)
+}
