@@ -161,6 +161,12 @@ function postDraft () {
     border-color: #275588;
     color: #8b8e93;
     cursor: not-allowed;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #9bc5f4;
+      border-color: #9bc5f4;
+      color: white;
+    }
   }
 
   &-danger {
@@ -168,4 +174,6 @@ function postDraft () {
     border-color: $pstr-red;
   }
 }
+
+@include post-container
 </style>

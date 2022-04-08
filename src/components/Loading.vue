@@ -23,10 +23,13 @@
   width: 28px;
   height: 28px;
   margin: 8px;
-  border: 4px solid #fff;
+  border: 4px solid white;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: white transparent transparent transparent;
+  @media (prefers-color-scheme: light) {
+    border-color: $pstr-blue transparent transparent transparent;
+  }
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;

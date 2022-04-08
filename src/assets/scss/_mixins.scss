@@ -5,3 +5,18 @@
     border-color: $pstr-light-gray;
   }
 }
+
+@mixin post-container {
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid $pstr-dark-gray;
+    border-radius: 15px;
+
+    @media (prefers-color-scheme: light) {
+      border-color: $pstr-light-gray;
+    }
+  }
+}

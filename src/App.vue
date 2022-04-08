@@ -35,15 +35,6 @@ a {
     color: $pstr-black;
   }
 }
-
-.post-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px;
-  border: 1px solid $pstr-dark-gray;
-  border-radius: 15px;
-}
 </style>
 
 <style lang="scss" src="~/assets/scss/posterr.scss" />
