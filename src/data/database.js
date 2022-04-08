@@ -55,6 +55,10 @@ const posts = [
 ]
 
 export const initDatabase = () => {
+  if (localStorage.getItem('users') && localStorage.getItem('posts')) {
+    return
+  }
+
   localStorage.setItem('users', JSON.stringify(users))
   localStorage.setItem('posts', JSON.stringify(posts))
 }
