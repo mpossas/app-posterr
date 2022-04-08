@@ -7,32 +7,46 @@
       placeholder="What's on your mind?"
     >
     </textarea>
-    <span v-if="limitExceeded" class="limit-exceeded">You exceeded your daily post limit</span>
+    <span v-if="postLimitReached" class="limit-reached">
+      You reached your daily post limit
+    </span>
     <div class="draft-actions">
       <span
         v-if="charCount"
         class="char-count"
-        :class="{ 'char-count--danger': maxCharCount }"
+        :class="{
+          'char-count--danger': charLimitReached
+        }"
       >
         {{ charCount }} / 777
       </span>
-      <button class="post-btn" :disabled="btnDisabled" @click="postDraft()">Post</button>
+      <button
+        class="post-btn"
+        :disabled="btnDisabled"
+        @click="postDraft()"
+        @keyup.enter="postDraft()"
+      >
+        Post
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { postMessage } from '~/services/posts'
 
+const router = useRouter()
+
 const draft = ref('')
-const limitExceeded = ref(false)
+const postLimitReached = ref(false)
 
 const charCount = computed(() => {
   return draft.value.length
 })
 
-const maxCharCount = computed(() => {
+const charLimitReached = computed(() => {
   return charCount.value === 777
 })
 
@@ -43,11 +57,10 @@ const btnDisabled = computed(() => {
 function postDraft () {
   postMessage(draft.value)
     .then(() => {
-      draft.value = ''
-      // Update feed
+      router.go()
     })
     .catch(() => {
-      limitExceeded.value = true
+      postLimitReached.value = true
     })
 }
 </script>
@@ -89,7 +102,7 @@ function postDraft () {
   }
 }
 
-.limit-exceeded {
+.limit-reached {
   align-self: flex-start;
   font-size: 12px;
   color: $pstr-red;
