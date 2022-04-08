@@ -8,21 +8,21 @@ const users = [
   },
   {
     id: 2,
-    username: 'thehelpseaxylophone',
+    username: 'thehelpseaxy',
     dateJoined: '2022-04-06T19:43:14.158Z',
     loggedIn: false,
     follows: [1, 3]
   },
   {
     id: 3,
-    username: 'thegoldrushpeaslime',
+    username: 'thegoldrush',
     dateJoined: '2022-04-05T19:43:14.158Z',
     loggedIn: false,
     follows: []
   },
   {
     id: 4,
-    username: 'thegoldrushwhatever',
+    username: 'alligatortears',
     dateJoined: '2022-04-04T19:43:14.158Z',
     loggedIn: false,
     follows: [3]
@@ -40,18 +40,25 @@ const posts = [
   {
     id: 1649381177650,
     type: 'repost',
-    author: 'thehelpseaxylophone',
+    author: 'thehelpseaxy',
     authorId: 2,
-    originalPostId: 1
+    originalPostId: 1649381118880
   },
   {
     id: 1649381190537,
     type: 'quote',
-    author: 'thegoldrushpeaslime',
+    author: 'thegoldrush',
     authorId: 3,
-    originalPostId: 1,
+    originalPostId: 1649381118880,
     comment: 'Lorem ipsum dolor sit amet.'
   },
+  {
+    id: 1649434679994,
+    type: 'post',
+    author: 'thegoldrush',
+    authorId: 3,
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae massa est.'
+  }
 ]
 
 export const initDatabase = () => {
