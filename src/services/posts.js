@@ -80,10 +80,20 @@ export const postMessage = message => {
   return savePost(post)
 }
 
-export const repostMessage = postId => {
+export const repostMessage = originalPostId => {
   const post = {
     type: 'repost',
-    originalPostId: postId
+    originalPostId
+  }
+
+  return savePost(post)
+}
+
+export const quotePost = (originalPostId, comment) => {
+  const post = {
+    type: 'quote',
+    originalPostId,
+    comment
   }
 
   return savePost(post)

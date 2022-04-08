@@ -7,6 +7,9 @@
       placeholder="What's on your mind?"
     >
     </textarea>
+    <div v-if="originalPost" class="post-container">
+      <Post :post="originalPost" />
+    </div>
     <CantPost v-if="postLimitReached" class="limit-reached" />
     <div class="draft-actions">
       <span
@@ -33,14 +36,20 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, toRef } from 'vue'
 import { useRouter } from 'vue-router'
-import { postMessage } from '~/services/posts'
+import { postMessage, quotePost } from '~/services/posts'
 import Loading from '~/components/Loading.vue'
 import CantPost from '~/components/posts/CantPost.vue'
+import Post from '~/components/posts/Post.vue'
+
+const props = defineProps({
+  originalPost: Object
+})
 
 const router = useRouter()
 
+const originalPost = toRef(props, 'originalPost')
 const draft = ref('')
 const postLimitReached = ref(false)
 const loading = ref(false)
@@ -59,7 +68,11 @@ const btnDisabled = computed(() => {
 
 function postDraft () {
   loading.value = true
-  postMessage(draft.value)
+  const postAction = originalPost.value
+  ? quotePost(originalPost.value.id, draft.value)
+  : postMessage(draft.value)
+
+  postAction
     .then(() => {
       router.go()
     })
@@ -110,6 +123,10 @@ function postDraft () {
 .limit-reached {
   align-self: flex-start;
   margin-bottom: 5px;
+}
+
+.post-container {
+  margin-bottom: 15px;
 }
 
 .char-count {
