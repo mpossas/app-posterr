@@ -6,16 +6,17 @@
     <span class="content">
       {{ post.content }}
     </span>
-    <div v-if="showActions" class="actions">
+    <div v-if="enableActions" class="actions">
       <i tabindex="0" class="fas fa-retweet repost"></i>
-      <i tabindex="0" class="fa-solid fa-quote-right quote"></i>
+      <i tabindex="0" class="fas fa-quote-right quote"></i>
     </div>
   </template>
   <Loading v-else class="loading" />
 </template>
 
 <script setup>
-import { toRef } from 'vue'
+import { computed, toRef } from 'vue'
+import { getCurrentUser } from '~/services/users'
 import Loading from '~/components/Loading.vue'
 
 const props = defineProps({
@@ -24,6 +25,12 @@ const props = defineProps({
 })
 
 const post = toRef(props, 'post')
+const { id: currentUserId } = getCurrentUser()
+
+const enableActions = computed(() => {
+  const currentUserIsAuthor = currentUserId === post.value.authorId
+  return props.showActions && !currentUserIsAuthor
+})
 </script>
 
 <style lang="scss" scoped>
