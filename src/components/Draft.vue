@@ -7,6 +7,7 @@
       placeholder="What's on your mind?"
     >
     </textarea>
+    <span v-if="cantPost" class="limit-exceeded">You exceeded your daily post limit</span>
     <div class="draft-actions">
       <span
         v-if="charCount"
@@ -15,15 +16,17 @@
       >
         {{ charCount }} / 777
       </span>
-      <button class="pstr-btn">Post</button>
+      <button class="pstr-btn" @click="postDraft()">Post</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import { postMessage } from '~/services/posts'
 
 const draft = ref('')
+const cantPost = ref(false)
 
 const charCount = computed(() => {
   return draft.value.length
@@ -32,6 +35,17 @@ const charCount = computed(() => {
 const maxCharCount = computed(() => {
   return charCount.value === 777
 })
+
+function postDraft () {
+  postMessage(draft.value)
+    .then(() => {
+      draft.value = ''
+      // Update feed
+    })
+    .catch(() => {
+      cantPost.value = true
+    })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -85,5 +99,12 @@ const maxCharCount = computed(() => {
     color: $pstr-red;
     border-color: $pstr-red;
   }
+}
+
+.limit-exceeded {
+  align-self: flex-start;
+  font-size: 12px;
+  color: $pstr-red;
+  margin-bottom: 5px;
 }
 </style>

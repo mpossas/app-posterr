@@ -31,29 +31,26 @@ const users = [
 
 const posts = [
   {
-    id: 1,
+    id: 1649381118880,
     type: 'post',
     author: 'possas',
     authorId: 1,
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae massa est. Curabitur euismod quam id sapien volutpat iaculis. Integer.',
-    datePosted: '2022-04-07T19:48:46.356Z'
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae massa est. Curabitur euismod quam id sapien volutpat iaculis. Integer.'
   },
   {
-    id: 2,
+    id: 1649381177650,
     type: 'repost',
     author: 'thehelpseaxylophone',
     authorId: 2,
-    originalPostId: 1,
-    datePosted: '2022-04-07T19:48:46.356Z'
+    originalPostId: 1
   },
   {
-    id: 3,
+    id: 1649381190537,
     type: 'quote',
     author: 'thegoldrushpeaslime',
     authorId: 3,
     originalPostId: 1,
-    comment: 'Lorem ipsum dolor sit amet.',
-    datePosted: '2022-04-07T19:48:46.356Z'
+    comment: 'Lorem ipsum dolor sit amet.'
   },
 ]
 

@@ -2,8 +2,24 @@ import { getCurrentUser } from './users'
 
 const getPosts = () => JSON.parse(localStorage.getItem('posts'))
 
+const userCantPost = () => {
+  const posts = getPosts()
+  const { id: currentUserId } = getCurrentUser()
+
+  const postsToday = posts.reduce((total, { id: postId, authorId }) => {
+    const datePosted = new Date(postId)
+    const postedToday = datePosted.getDay() === new Date().getDay()
+    const currentUserIsAuthor = currentUserId === authorId
+    const increment = currentUserIsAuthor && postedToday
+
+    return total + increment
+  }, 0)
+
+  return postsToday === 5
+}
+
 export const getAllPosts = () => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(getPosts())
     }, 500)
@@ -11,7 +27,7 @@ export const getAllPosts = () => {
 }
 
 export const getFollowedPosts = () => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       const posts = getPosts()
       const { follows: followedUsers } = getCurrentUser()
@@ -22,12 +38,35 @@ export const getFollowedPosts = () => {
   })
 }
 
-export const getPost = (id) => {
-  return new Promise((resolve) => {
+export const getPost = id => {
+  return new Promise(resolve => {
     setTimeout(() => {
-      const posts = JSON.parse(localStorage.getItem('posts'))
+      const posts = getPosts()
       const post = posts.find(post => post.id = id)
       resolve(post)
+    }, 500)
+  })
+}
+
+export const postMessage = message => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (userCantPost()) {
+        reject()
+      }
+      const posts = getPosts()
+      const { id, username } = getCurrentUser()
+
+      posts.push({
+        id: Date.now(),
+        type: 'post',
+        author: username,
+        authorId: id,
+        content: message
+      })
+
+      localStorage.setItem('posts', JSON.stringify(posts))
+      resolve()
     }, 500)
   })
 }
