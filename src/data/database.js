@@ -43,7 +43,7 @@ const posts = [
     type: 'repost',
     author: 'thehelpseaxylophone',
     authorId: 2,
-    originalPost: 1,
+    originalPostId: 1,
     datePosted: '2022-04-07T19:48:46.356Z'
   },
   {
@@ -51,7 +51,7 @@ const posts = [
     type: 'quote',
     author: 'thegoldrushpeaslime',
     authorId: 3,
-    originalPost: 1,
+    originalPostId: 1,
     comment: 'Lorem ipsum dolor sit amet.',
     datePosted: '2022-04-07T19:48:46.356Z'
   },

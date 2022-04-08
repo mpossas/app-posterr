@@ -1,17 +1,36 @@
 <template>
   <div>
-    <div class="post">
-      <span class="username">@possas</span>
-      <span class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae massa est. Curabitur euismod quam id sapien volutpat iaculis. Integer.</span>
-      <div class="actions">
-        <i tabindex="0" class="fas fa-retweet repost"></i>
-        <i tabindex="0" class="fa-solid fa-quote-right quote"></i>
-      </div>
+    <div v-for="post in props.posts" :key="post.id" class="post">
+      <Post v-if="isPost(post.type)" :post="post" showActions />
+      <Repost v-else-if="isRepost(post.type)" :post="post" />
+      <Quote v-else-if="isQuote(post.type)" :post="post" />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<script setup>
+import Post from './posts/Post.vue'
+import Repost from './posts/Repost.vue'
+import Quote from './posts/Quote.vue'
+
+const props = defineProps({
+  posts: Array
+})
+
+function isPost (type) {
+  return type === 'post'
+}
+
+function isRepost (type) {
+  return type === 'repost'
+}
+
+function isQuote (type) {
+  return type === 'quote'
+}
+</script>
+
+<style lang="scss">
 .post {
   display: flex;
   flex-direction: column;
@@ -24,26 +43,6 @@
 
   .username {
     color: #6b7682;
-  }
-
-  .content {
-    text-align: start
-  }
-
-  i {
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  .repost {
-    padding-right: 20px;
-    &:hover {
-      color: $pstr-blue;
-    }
-  }
-
-  .quote:hover {
-    color: $pstr-green;
   }
 
   @include border-bottom;
