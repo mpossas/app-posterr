@@ -20,7 +20,9 @@
       >
         {{ charCount }} / 777
       </span>
+      <Loading v-if="loading" />
       <button
+        v-else
         class="post-btn"
         :disabled="btnDisabled"
         @click="postDraft()"
@@ -36,11 +38,13 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { postMessage } from '~/services/posts'
+import Loading from '~/components/Loading.vue'
 
 const router = useRouter()
 
 const draft = ref('')
 const postLimitReached = ref(false)
+const loading = ref(false)
 
 const charCount = computed(() => {
   return draft.value.length
@@ -55,12 +59,14 @@ const btnDisabled = computed(() => {
 })
 
 function postDraft () {
+  loading.value = true
   postMessage(draft.value)
     .then(() => {
       router.go()
     })
     .catch(() => {
       postLimitReached.value = true
+      loading.value = false
     })
 }
 </script>
