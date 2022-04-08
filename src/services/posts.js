@@ -19,6 +19,28 @@ const userCantPost = () => {
   return postsToday === 5
 }
 
+const savePost = (post) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (userCantPost()) {
+        reject()
+      } else {
+        const posts = getPosts()
+        const { id, username } = getCurrentUser()
+
+        posts.push({
+          id: Date.now(),
+          author: username,
+          authorId: id,
+          ...post
+        })
+        localStorage.setItem('posts', JSON.stringify(posts))
+        resolve()
+      }
+    }, 500)
+  })
+}
+
 export const getAllPosts = () => {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -50,25 +72,19 @@ export const getPost = id => {
 }
 
 export const postMessage = message => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (userCantPost()) {
-        reject()
-      } else {
-        const posts = getPosts()
-        const { id, username } = getCurrentUser()
+  const post = {
+    type: 'post',
+    content: message
+  }
 
-        posts.push({
-          id: Date.now(),
-          type: 'post',
-          author: username,
-          authorId: id,
-          content: message
-        })
+  return savePost(post)
+}
 
-        localStorage.setItem('posts', JSON.stringify(posts))
-        resolve()
-      }
-    }, 500)
-  })
+export const repostMessage = postId => {
+  const post = {
+    type: 'repost',
+    originalPostId: postId
+  }
+
+  return savePost(post)
 }

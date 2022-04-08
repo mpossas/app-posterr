@@ -7,9 +7,7 @@
       placeholder="What's on your mind?"
     >
     </textarea>
-    <span v-if="postLimitReached" class="limit-reached">
-      You reached your daily post limit
-    </span>
+    <CantPost v-if="postLimitReached" class="limit-reached" />
     <div class="draft-actions">
       <span
         v-if="charCount"
@@ -39,6 +37,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { postMessage } from '~/services/posts'
 import Loading from '~/components/Loading.vue'
+import CantPost from '~/components/posts/CantPost.vue'
 
 const router = useRouter()
 
@@ -110,8 +109,6 @@ function postDraft () {
 
 .limit-reached {
   align-self: flex-start;
-  font-size: 12px;
-  color: $pstr-red;
   margin-bottom: 5px;
 }
 
