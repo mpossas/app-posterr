@@ -7,22 +7,6 @@ body {
   color: white;
   margin: 0;
 
-  .pstr-btn {
-    width: fit-content;
-    font-weight: bold;
-    color: white;
-    background-color: $pstr-blue;
-    padding: 10px 20px;
-    border: 1px solid $pstr-blue;
-    border-radius: 20px;
-    cursor: pointer;
-
-    &-danger {
-      background-color: $pstr-red;
-      border-color: $pstr-red;
-    }
-  }
-
   @media (prefers-color-scheme: light) {
     background-color: white;
     color: $pstr-black;

@@ -7,7 +7,7 @@
       placeholder="What's on your mind?"
     >
     </textarea>
-    <span v-if="cantPost" class="limit-exceeded">You exceeded your daily post limit</span>
+    <span v-if="limitExceeded" class="limit-exceeded">You exceeded your daily post limit</span>
     <div class="draft-actions">
       <span
         v-if="charCount"
@@ -16,7 +16,7 @@
       >
         {{ charCount }} / 777
       </span>
-      <button class="pstr-btn" @click="postDraft()">Post</button>
+      <button class="post-btn" :disabled="btnDisabled" @click="postDraft()">Post</button>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ import { computed, ref } from 'vue'
 import { postMessage } from '~/services/posts'
 
 const draft = ref('')
-const cantPost = ref(false)
+const limitExceeded = ref(false)
 
 const charCount = computed(() => {
   return draft.value.length
@@ -36,6 +36,10 @@ const maxCharCount = computed(() => {
   return charCount.value === 777
 })
 
+const btnDisabled = computed(() => {
+  return charCount.value === 0
+})
+
 function postDraft () {
   postMessage(draft.value)
     .then(() => {
@@ -43,7 +47,7 @@ function postDraft () {
       // Update feed
     })
     .catch(() => {
-      cantPost.value = true
+      limitExceeded.value = true
     })
 }
 </script>
@@ -85,6 +89,13 @@ function postDraft () {
   }
 }
 
+.limit-exceeded {
+  align-self: flex-start;
+  font-size: 12px;
+  color: $pstr-red;
+  margin-bottom: 5px;
+}
+
 .char-count {
   border: 2px solid $pstr-green;
   font-weight: bold;
@@ -101,10 +112,26 @@ function postDraft () {
   }
 }
 
-.limit-exceeded {
-  align-self: flex-start;
-  font-size: 12px;
-  color: $pstr-red;
-  margin-bottom: 5px;
+.post-btn {
+  width: fit-content;
+  font-weight: bold;
+  color: white;
+  background-color: $pstr-blue;
+  padding: 10px 20px;
+  border: 1px solid $pstr-blue;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #275588;
+    border-color: #275588;
+    color: #8b8e93;
+    cursor: not-allowed;
+  }
+
+  &-danger {
+    background-color: $pstr-red;
+    border-color: $pstr-red;
+  }
 }
 </style>
