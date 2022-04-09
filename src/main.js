@@ -7,7 +7,5 @@ import { initData } from '~/server/data'
 initData()
 createApp(App)
 .use(router)
-.use(vfmPlugin({
-  componentName: 'Modal'
-}))
+.use(vfmPlugin)
 .mount('#app')

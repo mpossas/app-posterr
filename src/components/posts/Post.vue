@@ -1,8 +1,6 @@
 <template>
-  <template v-if="post.author">
-    <span class="username">
-      @{{ post.author }}
-    </span>
+  <template v-if="post">
+    <Username :author="post.author" :authorId="post.authorId" />
     <span class="content">
       {{ post.content }}
     </span>
@@ -20,8 +18,9 @@ import { computed, ref, toRef, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { getCurrentUser } from '~/services/users'
 import { repostMessage } from '~/services/posts'
-import Loading from '~/components/Loading.vue'
+import Username from '~/components/custom/Username.vue'
 import CantPost from '~/components/custom/CantPost.vue'
+import Loading from '~/components/Loading.vue'
 
 const props = defineProps({
   post: Object,
@@ -55,13 +54,17 @@ function repost () {
 }
 
 function quotePost () {
-  $vfm.show('QuoteModal', { originalPostId: post.value.id })
+  $vfm.show('QuoteModal', { id: post.value.id })
 }
 </script>
 
 <style lang="scss" scoped>
 .username {
   margin-bottom: 16px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 
 .content {

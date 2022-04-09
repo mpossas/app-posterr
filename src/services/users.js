@@ -9,3 +9,8 @@ export const getCurrentUser = async () => {
   const users = await getUsers()
   return users.find(user => user.loggedIn)
 }
+
+export const getUser = async id => {
+  const users = await getUsers()
+  return users.find(user => user.id === id)
+}

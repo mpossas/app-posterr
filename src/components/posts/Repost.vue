@@ -26,7 +26,7 @@ getPost(originalPostId).then(response => {
 <style lang="scss" scoped>
 div {
   font-size: 12px;
-  color: #6b7682;
+  color: $pstr-pale-blue;
   margin-bottom: 5px;
 }
 

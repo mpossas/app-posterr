@@ -7,11 +7,13 @@
   </div>
   <router-view />
   <QuoteModal />
+  <UserProfileModal />
 </template>
 
 <script setup>
 import Draft from './components/Draft.vue'
 import QuoteModal from './components/modals/QuoteModal.vue'
+import UserProfileModal from './components/modals/UserProfileModal.vue'
 </script>
 
 <style lang="scss" scoped>

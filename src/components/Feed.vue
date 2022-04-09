@@ -42,7 +42,7 @@ function isQuote (type) {
   }
 
   .username {
-    color: #6b7682;
+    color: $pstr-pale-blue;
   }
 
   @include border-bottom;
