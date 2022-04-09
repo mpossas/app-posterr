@@ -1,13 +1,16 @@
 <template>
-  <div class="draft-container">
+  <div
+    class="draft-container"
+    :class="{ 'quote-container': isQuoting }"
+  >
     <textarea
       v-model="draft"
       maxlength="777"
       class="draft-text"
-      placeholder="What's on your mind?"
+      :placeholder="getPlaceholder"
     >
     </textarea>
-    <div v-if="originalPost" class="post-container">
+    <div v-if="isQuoting" class="post-container">
       <Post :post="originalPost" />
     </div>
     <CantPost v-if="postLimitReached" class="limit-reached" />
@@ -64,6 +67,14 @@ const charLimitReached = computed(() => {
 
 const btnDisabled = computed(() => {
   return charCount.value === 0
+})
+
+const isQuoting = computed(() => {
+  return !!originalPost.value
+})
+
+const getPlaceholder = computed(() => {
+  return isQuoting.value ? 'Leave a comment' : `What's on your mind?`
 })
 
 function postDraft () {
@@ -123,7 +134,7 @@ function postDraft () {
 
 .limit-reached {
   align-self: flex-start;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .post-container {
@@ -173,6 +184,12 @@ function postDraft () {
     background-color: $pstr-red;
     border-color: $pstr-red;
   }
+}
+
+.quote-container {
+  padding: 16px;
+  margin: 0;
+  border-bottom: none;
 }
 
 @include post-container

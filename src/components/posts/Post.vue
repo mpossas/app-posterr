@@ -9,14 +9,14 @@
     <CantPost v-if="postLimitReached" class="limit-reached" />
     <div v-if="enableActions" class="actions">
       <i tabindex="0" class="fas fa-retweet repost" @click="repost()"></i>
-      <i tabindex="0" class="fas fa-quote-right quote"></i>
+      <i tabindex="0" class="fas fa-quote-right quote" @click="quotePost()"></i>
     </div>
   </template>
   <Loading v-else class="loading" />
 </template>
 
 <script setup>
-import { computed, ref, toRef } from 'vue'
+import { computed, ref, toRef, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { getCurrentUser } from '~/services/users'
 import { repostMessage } from '~/services/posts'
@@ -29,6 +29,7 @@ const props = defineProps({
 })
 
 const router = useRouter()
+const $vfm = inject('$vfm')
 
 const post = toRef(props, 'post')
 const postLimitReached = ref(false)
@@ -51,6 +52,10 @@ function repost () {
     .catch(() => {
       postLimitReached.value = true
     })
+}
+
+function quotePost () {
+  $vfm.show('QuoteModal', { originalPostId: post.value.id })
 }
 </script>
 

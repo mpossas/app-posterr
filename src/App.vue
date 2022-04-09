@@ -6,10 +6,12 @@
     <router-link to="/following">Following</router-link>
   </div>
   <router-view />
+  <QuoteModal />
 </template>
 
 <script setup>
 import Draft from './components/Draft.vue'
+import QuoteModal from './components/modals/QuoteModal.vue'
 </script>
 
 <style lang="scss" scoped>
