@@ -21,7 +21,7 @@ import { useRouter } from 'vue-router'
 import { getCurrentUser } from '~/services/users'
 import { repostMessage } from '~/services/posts'
 import Loading from '~/components/Loading.vue'
-import CantPost from './CantPost.vue'
+import CantPost from '~/components/custom/CantPost.vue'
 
 const props = defineProps({
   post: Object,

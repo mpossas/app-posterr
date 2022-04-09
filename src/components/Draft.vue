@@ -43,7 +43,7 @@ import { computed, ref, toRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { postMessage, quotePost } from '~/services/posts'
 import Loading from '~/components/Loading.vue'
-import CantPost from '~/components/posts/CantPost.vue'
+import CantPost from '~/components/custom/CantPost.vue'
 import Post from '~/components/posts/Post.vue'
 
 const props = defineProps({
