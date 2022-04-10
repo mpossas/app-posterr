@@ -31,6 +31,7 @@
         </div>
       </div>
       <Feed :posts="posts" />
+      <Draft />
     </template>
   </Modal>
 </template>
@@ -47,6 +48,7 @@ import { getTotalUserPosts, getUserPosts } from '~/services/posts'
 import Modal from './Modal.vue'
 import Loading from '~/components/Loading.vue'
 import Feed from '~/components/Feed.vue'
+import Draft from '~/components/Draft.vue'
 
 const user = ref(null)
 const currentUser = ref({})
@@ -204,5 +206,9 @@ i {
   &:last-child {
     margin-right: 0;
   }
+}
+.draft-container {
+  padding-top: 16px;
+  margin-bottom: 0;
 }
 </style>

@@ -101,7 +101,7 @@ function postDraft () {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 20px;
+    padding: 16px;
     padding-top: 10px;
     margin-bottom: 20px;
 
@@ -144,7 +144,7 @@ function postDraft () {
 .char-count {
   border: 2px solid $pstr-green;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   width: fit-content;
   border-radius: 20px;
   padding: 5px 10px;
