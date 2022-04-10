@@ -22,7 +22,7 @@
   position: absolute;
   width: 28px;
   height: 28px;
-  margin: 8px;
+  margin: 0.5rem;
   border: 4px solid white;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

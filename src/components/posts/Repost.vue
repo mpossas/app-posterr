@@ -25,13 +25,13 @@ getPost(originalPostId).then(response => {
 
 <style lang="scss" scoped>
 div {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: $pstr-pale-blue;
-  margin-bottom: 5px;
+  margin-bottom: 0.25rem;
 }
 
 i {
-  font-size: 12px;
-  margin-right: 5px;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
 }
 </style>

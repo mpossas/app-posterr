@@ -26,7 +26,7 @@ function openUserProfile () {
 
 <style lang="scss" scoped>
 .username {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 
   &:hover {
     cursor: pointer;

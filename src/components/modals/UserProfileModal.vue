@@ -138,16 +138,16 @@ getCurrentUserData()
   display: flex;
   flex-direction: column;
   span {
-    margin-bottom: 2px;
+    margin-bottom: 0.25rem;
   }
   .pale-blue {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 .profile-container {
   display: flex;
   flex-direction: column;
-  padding: 8px 16px 16px;
+  padding: 0.5rem 1rem 1rem;
 
   @include border-bottom;
 }
@@ -156,17 +156,17 @@ getCurrentUserData()
   align-items: center;
   justify-content: space-between;
   height: 42px;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 .pale-blue {
   color: $pstr-pale-blue;
 }
 .following {
-  padding: 4px;
-  font-size: 12px;
+  padding: 0.25rem;
+  font-size: 0.75rem;
   color: #818d9a;
   border: 1px solid #242c37;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: #242c37;
 
   @media (prefers-color-scheme: light) {
@@ -176,10 +176,10 @@ getCurrentUserData()
   }
 }
 button {
-  padding: 6px 8px;
+  padding: 0.25rem 0.5rem;
   color: $pstr-blue;
   border: 1px solid $pstr-blue;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   background-color: $pstr-black;
   cursor: pointer;
 
@@ -194,21 +194,21 @@ button {
 .date-joined {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 i {
-  font-size: 16px;
-  margin-right: 6px;
+  font-size: 1rem;
+  margin-right: 0.25rem;
 }
 .social span {
-  margin-right: 12px;
+  margin-right: 0.75rem;
 
   &:last-child {
     margin-right: 0;
   }
 }
 .draft-container {
-  padding-top: 16px;
+  padding-top: 1rem;
   margin-bottom: 0;
 }
 </style>

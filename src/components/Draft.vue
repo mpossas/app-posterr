@@ -101,18 +101,18 @@ function postDraft () {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 16px;
-    padding-top: 10px;
-    margin-bottom: 20px;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 1.25rem;
 
     @include border-bottom
   }
   &-text {
     width: 100%;
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     color: white;
     background-color: $pstr-black;
     border: none;
@@ -134,22 +134,22 @@ function postDraft () {
 
 .limit-reached {
   align-self: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .post-container {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
 .char-count {
   border: 2px solid $pstr-green;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 0.75rem;
   width: fit-content;
-  border-radius: 20px;
-  padding: 5px 10px;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.5rem;
   color: $pstr-green;
-  margin-right: 10px;
+  margin-right: 0.75rem;
 
   &--danger {
     color: $pstr-red;
@@ -162,9 +162,9 @@ function postDraft () {
   font-weight: bold;
   color: white;
   background-color: $pstr-blue;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
   border: 1px solid $pstr-blue;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   cursor: pointer;
 
   &:disabled {
@@ -187,7 +187,7 @@ function postDraft () {
 }
 
 .quote-container {
-  padding: 16px;
+  padding: 1rem;
   margin: 0;
   border-bottom: none;
 }

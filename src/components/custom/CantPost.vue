@@ -4,7 +4,7 @@
 
 <style lang="scss" scoped>
 span {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: $pstr-red;
 }
 </style>

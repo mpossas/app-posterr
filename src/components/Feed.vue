@@ -35,10 +35,10 @@ function isQuote (type) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
+  padding: 1.25rem;
 
   span {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   .username {

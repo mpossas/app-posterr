@@ -18,18 +18,18 @@ import UserProfileModal from './components/modals/UserProfileModal.vue'
 
 <style lang="scss" scoped>
 h1 {
-  padding-left: 20px;
-  font-size: 22px;
+  padding-left: 1.25rem;
+  font-size: 1.5rem;
 }
 
 #nav {
-  margin: 0 20px;
+  margin: 0 1.25rem;
 }
 
 a {
   color: white;
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 0.75rem;
 
   &:hover {
     color: $pstr-blue;

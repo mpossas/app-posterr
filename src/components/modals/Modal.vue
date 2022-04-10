@@ -69,9 +69,9 @@ function getParams (event) {
 .header  {
   display: flex;
   align-items: center;
-  margin: 16px 0 0 16px;
+  margin: 1rem 0 0 1rem;
   i {
-    margin-right: 20px;
+    margin-right: 1.25rem;
     &:hover {
       color: $pstr-red;
     }

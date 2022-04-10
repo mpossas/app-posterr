@@ -11,9 +11,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 16px;
+    padding: 1rem;
     border: 1px solid $pstr-dark-gray;
-    border-radius: 15px;
+    border-radius: 1rem;
 
     @media (prefers-color-scheme: light) {
       border-color: $pstr-light-gray;

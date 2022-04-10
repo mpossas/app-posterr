@@ -58,7 +58,7 @@ function quotePost () {
 
 <style lang="scss" scoped>
 .username {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -70,21 +70,21 @@ function quotePost () {
 }
 
 .limit-reached {
-  margin-top: 8px;
+  margin-top: 0.5rem;
   margin-bottom: 0;
 }
 
 .actions {
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 i {
-  font-size: 20px;
+  font-size: 1.25rem;
   cursor: pointer;
 }
 
 .repost {
-  padding-right: 20px;
+  padding-right: 1.25rem;
   &:hover {
     color: $pstr-blue;
   }
