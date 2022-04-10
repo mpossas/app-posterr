@@ -1,5 +1,11 @@
 <template>
   <Modal name="UserProfileModal">
+    <template #header>
+      <div class="header">
+        <span>{{ user?.username }}</span>
+        <span class="pale-blue">{{ totalPosts }} Posts</span>
+      </div>
+    </template>
     <template #content="{params}">
       <div class="profile-container">
         <span class="pale-blue">
@@ -10,10 +16,9 @@
           <i class="fa-solid fa-calendar-days"></i>
           Joined {{ dateJoined }}
         </span>
-        <div class="numbers">
+        <div class="social">
           <span>{{ following }} <span class="pale-blue">Following</span></span>
           <span>{{ followers }} <span class="pale-blue">Followers</span></span>
-          <span>{{ totalPosts }} <span class="pale-blue">Posts</span></span>
         </div>
       </div>
     </template>
@@ -70,6 +75,16 @@ getCurrentUser().then(response => {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-bottom: 2px;
+  }
+  .pale-blue {
+    font-size: 12px;
+  }
+}
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -103,7 +118,7 @@ i {
   font-size: 16px;
   margin-right: 6px;
 }
-.numbers span {
+.social span {
   margin-right: 12px;
 
   &:last-child {

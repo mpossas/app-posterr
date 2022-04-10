@@ -8,7 +8,10 @@
     focus-trap
     @beforeOpen="getParams"
   >
-    <i class="fa-solid fa-xmark" @click="show = false"></i>
+    <div class="header">
+      <i class="fa-solid fa-xmark" @click="show = false"></i>
+      <slot name="header" />
+    </div>
     <slot name="content" :params="params" />
   </vue-final-modal>
 </template>
@@ -61,11 +64,15 @@ function getParams (event) {
   }
 }
 
-i {
-  margin: 16px 0 20px 16px;
-
-  &:hover {
-    color: $pstr-red;
+.header  {
+  display: flex;
+  align-items: center;
+  margin: 16px 0 0 16px;
+  i {
+    margin-right: 20px;
+    &:hover {
+      color: $pstr-red;
+    }
   }
 }
 </style>
