@@ -8,10 +8,19 @@
     </template>
     <template #content="{params}">
       <div class="profile-container">
-        <span class="pale-blue">
-          @{{ getUser(params) }}
-          <span v-if="currentUserFollows" class="following">Following</span>
-        </span>
+        <div class="user-info">
+          <span class="pale-blue">
+            @{{ getUser(params) }}
+            <span v-if="currentUserFollows" class="following">Following</span>
+          </span>
+          <div v-if="shouldShowButtons">
+            <Loading v-if="loading" />
+            <div v-else>
+              <button v-if="currentUserFollows" class="unfollow-btn" @click="unfollow(params.id)">Unfollow</button>
+              <button v-else @click="follow(params.id)">Follow</button>
+            </div>
+          </div>
+        </div>
         <span class="date-joined pale-blue">
           <i class="fa-solid fa-calendar-days"></i>
           Joined {{ dateJoined }}
@@ -26,15 +35,22 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
-import { getCurrentUser, getUserFollowers } from '~/services/users'
-import { getTotalUserPosts } from '~/services/posts'
-import Modal from './Modal.vue'
+import { computed, ref, watch } from "vue";
+import {
+  getCurrentUser,
+  getUserFollowers,
+  followUser,
+  unfollowUser,
+} from "~/services/users";
+import { getTotalUserPosts } from "~/services/posts";
+import Modal from "./Modal.vue";
+import Loading from "~/components/Loading.vue";
 
 const user = ref(null)
 const currentUser = ref({})
 const followers = ref(0)
 const totalPosts = ref(0)
+const loading = ref(false)
 
 const currentUserFollows = computed(() => {
   return currentUser.value?.follows?.includes(user.value?.id)
@@ -49,15 +65,52 @@ const following = computed(() => {
   return user.value?.follows?.length
 })
 
+const shouldShowButtons = computed(() => {
+  return currentUser.value?.id !== user.value?.id
+})
+
 function getUser (params) {
   user.value = params
   return params.username
+}
+
+function getCurrentUserData () {
+  getCurrentUser().then(response => {
+    currentUser.value = response
+  })
 }
 
 function getFollowers (id) {
   getUserFollowers(id).then(response => {
     followers.value = response
   })
+}
+
+function updateUserData (userId) {
+  if (userId) {
+    getFollowers(userId)
+  }
+  getCurrentUserData()
+}
+
+function socialAction (action, userId) {
+  loading.value = true
+  const actions = {
+    'follow': () => followUser(userId),
+    'unfollow': () => unfollowUser(userId)
+  }
+  actions[action]().then(() => {
+    updateUserData(userId)
+    loading.value = false
+  })
+}
+
+function unfollow (userId) {
+  socialAction('unfollow', userId)
+}
+
+function follow (userId) {
+  socialAction('follow', userId)
 }
 
 watch(user, ({ id }) => {
@@ -69,9 +122,7 @@ watch(user, ({ id }) => {
   }
 })
 
-getCurrentUser().then(response => {
-  currentUser.value = response
-})
+getCurrentUserData()
 </script>
 
 <style lang="scss" scoped>
@@ -90,6 +141,13 @@ getCurrentUser().then(response => {
   flex-direction: column;
   padding: 16px;
 }
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+  margin-bottom: 16px;
+}
 .pale-blue {
   color: $pstr-pale-blue;
 }
@@ -107,11 +165,25 @@ getCurrentUser().then(response => {
     background-color: #ecf0f1;
   }
 }
+button {
+  padding: 6px 8px;
+  color: $pstr-blue;
+  border: 1px solid $pstr-blue;
+  border-radius: 20px;
+  background-color: $pstr-black;
+  cursor: pointer;
+
+  @media (prefers-color-scheme: light) {
+    background-color: white;
+  }
+}
+.unfollow-btn {
+  color: $pstr-red;
+  border-color: $pstr-red;
+}
 .date-joined {
   display: flex;
   align-items: center;
-}
-span {
   margin-bottom: 16px;
 }
 i {
