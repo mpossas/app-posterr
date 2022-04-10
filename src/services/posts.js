@@ -64,6 +64,15 @@ export const getPost = async id => {
   return post
 }
 
+export const getTotalUserPosts = async userId => {
+  const posts = await getPosts()
+  const totalPosts = posts.reduce((total, { authorId }) => {
+    const userIsAuthor = userId === authorId
+    return total + userIsAuthor
+  }, 0)
+  return totalPosts
+}
+
 export const postMessage = message => {
   const post = {
     type: 'post',

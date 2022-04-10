@@ -1,5 +1,10 @@
 <template>
-  <span class="username" @click="openUserProfile()">
+  <span
+    class="username"
+    tabindex="0"
+    @click="openUserProfile()"
+    @keyup.enter="openUserProfile()"
+  >
     @{{ props.author }}
   </span>
 </template>
