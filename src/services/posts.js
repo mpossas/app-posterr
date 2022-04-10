@@ -70,7 +70,15 @@ export const getTotalUserPosts = async userId => {
     const userIsAuthor = userId === authorId
     return total + userIsAuthor
   }, 0)
+
   return totalPosts
+}
+
+export const getUserPosts = async userId => {
+  const posts = await getPosts()
+  const userPosts = posts.filter(post => post.authorId === userId)
+
+  return sortPosts(userPosts)
 }
 
 export const postMessage = message => {

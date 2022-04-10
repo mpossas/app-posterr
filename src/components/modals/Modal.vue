@@ -54,6 +54,8 @@ function getParams (event) {
   flex-direction: column;
   margin: 0 1rem;
   width: 598px;
+  max-height: 80%;
+  overflow: scroll;
   border: 1px solid $pstr-dark-gray;
   border-radius: 0.25rem;
   background-color: $pstr-black;

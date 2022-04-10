@@ -10,7 +10,6 @@
       <i tabindex="0" class="fas fa-quote-right quote" @click="quotePost()"></i>
     </div>
   </template>
-  <Loading v-else class="loading" />
 </template>
 
 <script setup>
@@ -20,7 +19,6 @@ import { getCurrentUser } from '~/services/users'
 import { repostMessage } from '~/services/posts'
 import Username from '~/components/custom/Username.vue'
 import CantPost from '~/components/custom/CantPost.vue'
-import Loading from '~/components/Loading.vue'
 
 const props = defineProps({
   post: Object,
@@ -94,9 +92,5 @@ i {
 
 .quote:hover {
   color: $pstr-green;
-}
-
-.loading {
-  align-self: center;
 }
 </style>

@@ -30,27 +30,30 @@
           <span>{{ followers }} <span class="pale-blue">Followers</span></span>
         </div>
       </div>
+      <Feed :posts="posts" />
     </template>
   </Modal>
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch } from 'vue'
 import {
   getCurrentUser,
   getUserFollowers,
   followUser,
   unfollowUser,
-} from "~/services/users";
-import { getTotalUserPosts } from "~/services/posts";
-import Modal from "./Modal.vue";
-import Loading from "~/components/Loading.vue";
+} from '~/services/users'
+import { getTotalUserPosts, getUserPosts } from '~/services/posts'
+import Modal from './Modal.vue'
+import Loading from '~/components/Loading.vue'
+import Feed from '~/components/Feed.vue'
 
 const user = ref(null)
 const currentUser = ref({})
 const followers = ref(0)
 const totalPosts = ref(0)
 const loading = ref(false)
+const posts = ref([])
 
 const currentUserFollows = computed(() => {
   return currentUser.value?.follows?.includes(user.value?.id)
@@ -118,7 +121,10 @@ watch(user, ({ id }) => {
     getFollowers(id)
     getTotalUserPosts(id).then(response => {
       totalPosts.value = response
-  })
+    })
+    getUserPosts(id).then(response => {
+      posts.value = response
+    })
   }
 })
 
@@ -139,14 +145,16 @@ getCurrentUserData()
 .profile-container {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 8px 16px 16px;
+
+  @include border-bottom;
 }
 .user-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 42px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 .pale-blue {
   color: $pstr-pale-blue;
