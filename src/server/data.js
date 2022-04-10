@@ -20,8 +20,8 @@ const users = [
     follows: []
   },
   {
-    id: 1649434679994,
-    username: 'alligatortears',
+    id: 1649615676363,
+    username: 'thegraduatebee',
     loggedIn: false,
     follows: [1649547730535]
   }
@@ -51,10 +51,10 @@ const posts = [
     comment: 'Lorem ipsum dolor sit amet.'
   },
   {
-    id: 1649434679994,
+    id: 1649615714810,
     type: 'post',
-    author: 'alligatortears',
-    authorId: 1649434679994,
+    author: 'thegraduatebee',
+    authorId: 1649615676363,
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae massa est.'
   }
 ]
