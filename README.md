@@ -41,6 +41,12 @@ If I had more time, I would have just downloaded the icons I use instead of the 
 
 If this project were to grow, I believe the daily limit of five posts would be an obstacle. It would have to at least disregard reposts.
 
-In a real-life situation, the project could use NuxtJS for SSR. The service layer would be handled by a server with superior computing power. The content could also be cached by a CDN like Amazon CloudFront, providing a faster and more consistent website for the user.
+In a real-life situation, I would use Vuex to implement state management for the application. It provides a more structured and decoupled access to data.
 
+I would also use NuxtJS for SSR. The service layer, that mutates data from the back-end, would be handled by a server with superior computing power.
 
+We could also break down the feed and user profile into microfrontends, each handling their own responsibilities.
+
+Thinking about maintenance, we could add unit tests (Jest) and E2E (TestCafé) to ensure the code is working, and add logs (Sentry) to monitor the health of the application.
+
+The content could also be cached by a CDN (Amazon CloudFront), providing faster content loading for the user.
