@@ -34,3 +34,13 @@ $ npm start
 - Create a new service to filter posts by a user ID and "post" and "reply" types. These posts would appear in the new "Posts and Replies" feed.
 - Adjust the other services that return posts to ignore "reply" type posts.
 - Assuming replies count towards the daily post limit, they would already be counted.
+
+## Critique
+
+If I had more time, I would have just downloaded the icons I use instead of the entire fontawesome-free library. I would have also added unit tests to the project.
+
+If this project were to grow, I believe the daily limit of five posts would be an obstacle. It would have to at least disregard reposts.
+
+In a real-life situation, the project could use NuxtJS for SSR. The service layer would be handled by a server with superior computing power. The content could also be cached by a CDN like Amazon CloudFront, providing a faster and more consistent website for the user.
+
+
