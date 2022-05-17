@@ -31,7 +31,6 @@
         </div>
       </div>
       <Feed :posts="posts" />
-      <Draft />
     </template>
   </Modal>
 </template>
