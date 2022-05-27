@@ -20,6 +20,7 @@ $ npm start
 ### Home
 ![](/src/assets/images/dark.png)
 ![](/src/assets/images/light.png)
+
 ![](/src/assets/images/desktop.png)
 
 ### Profile
@@ -29,15 +30,19 @@ $ npm start
 
 ### Post
 ![](/src/assets/images/draft.png)
+
 ![](/src/assets/images/post.png)
 
 ### Repost
 ![](/src/assets/images/repost-action.png)
+
 ![](/src/assets/images/repost.png)
 
 ### Quote
 ![](/src/assets/images/quote-action.png)
+
 ![](/src/assets/images/quote-modal.png)
+
 ![](/src/assets/images/quote.png)
 
 ## Critique
